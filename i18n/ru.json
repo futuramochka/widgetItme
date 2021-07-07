@@ -1,0 +1,10 @@
+{
+  "widget": {
+    "name": "NOVA уведомления",
+    "short_description": "Уведомления в telegram и chrome",
+    "description": "Уведомления в telegram и chrome<br>Для получения номера telegram, необходимо написать боту <a href='tg://resolve?domain=nova_notif_bot' target='_blank'>@nova_notif_bot</a><br>Для получения токена браузера, необходимо перейти по <a href='https://s1-nova.ru/auto/notifications/getNum.php' target='_blank'>ссылке</a>"
+  },
+  "settings": {
+    "notifications_market_settings": "Введите в поле '1' и нажмите 'Сохранить'"
+  }
+}

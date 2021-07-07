@@ -1,0 +1,11 @@
+.nova_notif .keys{
+    padding: 10px;
+    background: #efefef;
+    border-radius: 5px;
+    margin-top: 2px;
+}
+
+.nova_notif .text{
+    resize: none;
+    height: 150px;
+}

@@ -1,0 +1,36 @@
+{
+  "widget": {
+    "name": "widget.name",
+    "description": "widget.description",
+    "short_description": "widget.short_description",
+    "version": "1.0.24",
+    "interface_version": 2,
+    "init_once": false,
+    "locale": [
+      "ru"
+    ],
+    "installation": true
+  },
+  "locations": [
+    "everywhere",
+    "digital_pipeline"
+  ],
+  "settings": {
+    "notifications_market_settings": {
+      "name": "settings.notifications_market_settings",
+      "type": "text",
+      "required": false
+    }
+  },
+  "dp": {
+    "settings": {
+      "settings": {
+        "name": "settings.notifications_market_settings",
+        "type": "custom",
+        "required": true
+      }
+    },
+    "action_multiple": false,
+    "webhook_url": "https://s1-nova.ru/auto/notifications/hook.php"
+  }
+}
