@@ -1,0 +1,2 @@
+# widgetItme
+Пример виджета  amoCRM
