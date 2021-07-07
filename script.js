@@ -1,8 +1,8 @@
 // TODO изменить файлы подключения
-define(['jquery', 'lib/components/base/modal', './npl.js', './notifications_market_settings.js', './nova_payment.js', './chat.js', './n_uk.js', './notifications_market.js'], function($,Modal){
+define(['jquery', 'lib/components/base/modal', './npl.js', './linked_contacts_market_settings.js', './nova_payment.js', './chat.js', './n_uk.js', './linked_contacts.js'], function($,Modal){
 	var CustomWidget = function () {
 
-		let widgetName = 'notifications' + '_market';
+		let widgetName = 'linked_contacts' + '_market';
 
 		var self = this;
 		system = self.system(),
@@ -11,13 +11,18 @@ define(['jquery', 'lib/components/base/modal', './npl.js', './notifications_mark
 					var event = new Event("render");
 					document.dispatchEvent(event);
 
-					$('#page_holder').append('<link type="text/css" rel="stylesheet" href="' + self.params.path + '/uikit.css?v=' + self.params.version + '" >');
-					$('#page_holder').append('<link type="text/css" rel="stylesheet" href="' + self.params.path + '/nova_payment.css?v=' + self.params.version +'" >');
-					$('#page_holder').append('<link type="text/css" rel="stylesheet" href="' + self.params.path + '/notifications_market.css?v=' + self.params.version + '" >');
-
 					return true;
 				},
 				init: function() {
+					if($('link[href="' + self.params.path + '/uikit.css?v=' + self.params.version +'"').length < 1) {
+						$('head').append('<link type="text/css" rel="stylesheet" href="' + self.params.path + '/uikit.css?v=' + self.params.version + '" >');
+					}
+					if($('link[href="' + self.params.path + '/nova_payment.css?v=' + self.params.version +'"').length < 1) {
+						$('head').append('<link type="text/css" rel="stylesheet" href="' + self.params.path + '/nova_payment.css?v=' + self.params.version +'" >');
+					}
+					if($('link[href="' + self.params.path + '/linked_contacts.css?v=' + self.params.version +'"').length < 1) {
+						$('head').append('<link type="text/css" rel="stylesheet" href="' + self.params.path + '/linked_contacts.css?v=' + self.params.version +'" >');
+					}
 
 					payment.init(function() {
 
@@ -26,6 +31,8 @@ define(['jquery', 'lib/components/base/modal', './npl.js', './notifications_mark
 						document.dispatchEvent(event);
 
 					}, widgetName, self);
+					var novaReady = new Event("nova_ready");
+					document.dispatchEvent(novaReady);
 
 					return true;
 				},
