@@ -13,24 +13,13 @@
   },
   "locations": [
     "everywhere",
-    "digital_pipeline"
+    "clist"
   ],
   "settings": {
     "notifications_market_settings": {
-      "name": "settings.notifications_market_settings",
-      "type": "text",
+      "name": "settings.linked_contacts_market_settings",
+      "type": "custom",
       "required": false
     }
-  },
-  "dp": {
-    "settings": {
-      "settings": {
-        "name": "settings.notifications_market_settings",
-        "type": "custom",
-        "required": true
-      }
-    },
-    "action_multiple": false,
-    "webhook_url": "https://s1-nova.ru/auto/notifications/hook.php"
   }
 }

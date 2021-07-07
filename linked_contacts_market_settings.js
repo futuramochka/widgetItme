@@ -13,7 +13,7 @@ if (!this.nova_platform_blob)
     $('.' + id + ' .widget_settings_block:last').hide().parent().append(settingsHTML);
 
     $(document).ready(function () {
-        let customInput = document.querySelector("[name='ltv_settings']");
+        let customInput = document.querySelector("[name='linked_contacts_market_settings']");
         let windowModalSettings = document.querySelector('.modal');
         if(windowModalSettings != undefined) {
             if(customInput.value == 1) {
