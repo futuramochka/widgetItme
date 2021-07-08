@@ -16,18 +16,18 @@ if (!this.nova_platform_blob)
         let customInput = document.querySelector("[name='linked_contacts_market_settings']");
         let windowModalSettings = document.querySelector('.modal');
         if(windowModalSettings != undefined) {
-            if(customInput.value == 1) {
+            if(customInput.value == "") {
+                customInput.value = 1;
                 setTimeout(function() {
-                    ltv_market_settings.save()
+                    linked_contacts_market_settings.save()
                 }, 5000);
-                customInput.value = 2;
-            } else {
+            } else if(customInput.value == 1) {
                 console.log('Настройки виджета сохранены');
             }
         }
     })
 }
 
-linked_contacts_market_settings = function () {
+linked_contacts_market_settings.save = function () {
     $('.js-widget-save').click();
 }

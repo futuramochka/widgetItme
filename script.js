@@ -1,5 +1,5 @@
 // TODO изменить файлы подключения
-define(['jquery', 'lib/components/base/modal', './npl.js', './linked_contacts_market_settings.js', './nova_payment.js', './chat.js', './n_uk.js', './linked_contacts.js'], function($,Modal){
+define(['jquery', 'lib/components/base/modal', './npl.js', './linked_contacts_market_settings.js', './settings_template.js', './nova_payment.js', './chat.js', './n_uk.js', './linked_contacts.js'], function($,Modal){
 	var CustomWidget = function () {
 
 		let widgetName = 'linked_contacts' + '_market';
@@ -44,11 +44,11 @@ define(['jquery', 'lib/components/base/modal', './npl.js', './linked_contacts_ma
 				settings: function(){
 					var event = new Event("settings");
 
-					notifications_market_settings.showSettings(self.params.widget_code);
+					linked_contacts_market_settings.showSettings(self.params.widget_code);
 
 					let settings = self.get_settings();
-					if (!settings.notifications_market_settings)
-						settings.notifications_market_settings = JSON.stringify({"notifications_market_data": 1})
+					if (!settings.linked_contacts_market_settings)
+						settings.linked_contacts_market_settings = JSON.stringify({"linked_contacts_market_data": 1})
 
 					for (let key in payment.config.widgets) {
 

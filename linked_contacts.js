@@ -1,12 +1,13 @@
 var n_linked_c = {};
 var lc = {};
+var npl = {};
 var modalAnswer = false;
 document.addEventListener('nova_ready',function(){
-	// setInterval(n_linked_c.checkLinkedContacts,1000);
+	 setInterval(n_linked_c.checkLinkedContacts,1000);
 })
 
 n_linked_c.checkLinkedContacts = function(){
-  console.log('Виджет СВЯЗАННЫЕ КОНТАКТЫ работает');
+  //console.log('Виджет СВЯЗАННЫЕ КОНТАКТЫ работает');
 	if((window.location.href.indexOf('/leads/')!=-1)&&($('#list_multiple_actions .n_linked').length==0))
 	{
 		var ob = $('#list_multiple_actions .list-multiple-actions__actions-wrapper');

@@ -3,7 +3,7 @@
     "name": "widget.name",
     "description": "widget.description",
     "short_description": "widget.short_description",
-    "version": "1.0.24",
+    "version": "1.1.23",
     "interface_version": 2,
     "init_once": false,
     "locale": [
@@ -13,10 +13,11 @@
   },
   "locations": [
     "everywhere",
-    "clist"
+    "clist",
+    "llist"
   ],
   "settings": {
-    "notifications_market_settings": {
+    "linked_contacts_market_settings": {
       "name": "settings.linked_contacts_market_settings",
       "type": "custom",
       "required": false
