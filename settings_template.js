@@ -1,4 +1,4 @@
-let templateHTML = '<div class="uikit_nova n_rasp_man_view n_rasp_man">'+
+linked_contacts_market_settings.templateHTML = '<div class="uikit_nova n_rasp_man_view n_rasp_man">'+
 '<div class="nova-headers">'+
 '<div class="nova-headers__title">Связанные контакты</div>'+
 '</div>'+

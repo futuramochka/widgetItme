@@ -265,8 +265,10 @@ payment.renderSettings = function (widgetName) {
 		if ((startDateTest + 3600 * 24 * 7) > currentDate) {
 			let countTestDays = Math.ceil(((startDateTest + 3600 * 24 * 7) - currentDate) / (3600 * 24));
 			$('.nova_payment__status').text('Осталось дней тестирования: ' + countTestDays).css('color', 'rgb(36, 188, 140)');
+			linked_contacts_market_settings.work = true;
 		} else {
 			$('.nova_payment__status').text('Тестирование виджета закончилось').css('color', 'darkred');
+			linked_contacts_market_settings.work = false;
 		}
 
 		$('.nova-headers').append('<button id="nova-button-buy" class="uk-button uk-button-primary uk-button-small">Купить</button>')

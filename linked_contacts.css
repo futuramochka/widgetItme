@@ -28,3 +28,8 @@
     border-radius: 4px;
     color: #fff;
   }
+
+  .modal-body {
+    display: flex;
+    justify-content: space-around;
+  }

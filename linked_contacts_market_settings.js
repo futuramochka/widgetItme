@@ -5,12 +5,14 @@ if (!this.nova_platform_blob)
     var nova_platform_blob = '';
 
     linked_contacts_market_settings.showSettings = function (id) {
-    var settingsHTML = templateHTML;
+    var settingsHTML = linked_contacts_market_settings.templateHTML;
+    
     console.log("Текст описания виджета Связанные контакты получен");
     if (!$('.' + id + ' .widget_settings_block').length)
         return false;
 
     $('.' + id + ' .widget_settings_block:last').hide().parent().append(settingsHTML);
+    
 
     $(document).ready(function () {
         let customInput = document.querySelector("[name='linked_contacts_market_settings']");

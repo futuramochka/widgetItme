@@ -1,21 +1,7 @@
+
 var n_linked_c = {};
 var lc = {};
-var npl = {};
 var modalAnswer = false;
-document.addEventListener('nova_ready',function(){
-	 setInterval(n_linked_c.checkLinkedContacts,1000);
-})
-
-n_linked_c.checkLinkedContacts = function(){
-  //console.log('Виджет СВЯЗАННЫЕ КОНТАКТЫ работает');
-	if((window.location.href.indexOf('/leads/')!=-1)&&($('#list_multiple_actions .n_linked').length==0))
-	{
-		var ob = $('#list_multiple_actions .list-multiple-actions__actions-wrapper');
-		if(ob.length==0)
-			ob = $('#list_multiple_actions');
-		$(ob).append('<div class="list-multiple-actions__item js-list-multiple-actions__item n_linked"><span onclick="n_linked_c.showLinked()">связанные контакты</span><span class="list-multiple-actions__item-more js-list-multiple-actions__item-more" style=""><span class="list-multiple-actions__item__icon icon icon-v-dots-2"></span>ещё</span></div>');
-	}
-}
 
 n_linked_c.ArrayHelper = {
     split: function (arr, n) {
@@ -26,7 +12,7 @@ n_linked_c.ArrayHelper = {
         return res;
     }
 };
-
+//Функция для получения контактов
 n_linked_c.Contacts = {
     //var contacts = Contacts.get();
     get: function (params = {}) {
@@ -69,10 +55,10 @@ n_linked_c.Contacts = {
     },
 };
 
-
-n_linked_c.showLinked = function()
+//Функция для показа связанных контактов
+n_linked_c.showLinked = function(arrLeadsCheckedId)
 {
-	npl.showPreloaderNova();
+	//npl.showPreloaderNova();
   data = n_linked_c.Contacts.get({query:'auto_linked'});
   data = {_embedded:{items:data}};
 	//$.get('/api/v2/contacts?query=auto_linked',function(data){
@@ -104,42 +90,26 @@ n_linked_c.showLinked = function()
 
 				if(i>=$('.js-list-row[data-id] .control-checkbox__body').length-1)
 				{
-
-
-          //Всплывающее окно вместо confirm
-          npl.hidePreloaderNova();
-          lc.confirmModal = new npl.modal({
-            class_name: 'lc_modal lc_confirm_modal',
-            init: function($modal_body) {
-              var $this = $(this);
-              $modal_body
-                .trigger('modal:loaded')
-                .html($('.lc_modal_data').html())
-                .trigger('modal:centrify')
-            }
-          })
-          $('.lc_modal').show();
-
           //Результат взаимодействия со всплывающим окном
           n_linked_c.modalResult = function(modalAnswer) {
 
-            $('.lc_modal').hide();
+            //$('.lc_modal').hide();
             console.log('modalAnswer: ', modalAnswer);
 
-            if (modalAnswer == false) {
-              console.log('modalAnswer = false, т.е. !confirm("Обработать все записи по фильтру?")');
-              $.get('/api/v2/leads?&id[]='+list.join('&id[]='),gnext);
+            if (modalAnswer == true) {
+              //console.log('modalAnswer = false, т.е. !confirm("Обработать все записи по фильтру?")');
+              $.get('/api/v2/leads?&id[]='+arrLeadsCheckedId.join('&id[]='),gnext);
             } else {
-              console.log('modalAnswer = true, т.е. confirm("Обработать все записи по фильтру?")');
+              //console.log('modalAnswer = true, т.е. confirm("Обработать все записи по фильтру?")');
               n_linked_c.getAll(gnext);
             }
           }
 
 
-					/* if(!confirm('Обработать все записи по фильтру?'))
-						$.get('/api/v2/leads?&id[]='+list.join('&id[]='),gnext)
+					 /*if(modalAnswer == true)
+						$.get('/api/v2/leads?&id[]='+arrLeadsCheckedId.join('&id[]='),gnext)
 					else
-						n_linked_c.getAll(gnext); */
+						n_linked_c.getAll(gnext);*/
 
 					function gnext(data)
 					{
@@ -181,7 +151,7 @@ n_linked_c.showLinked = function()
 										for(var t in data._embedded.items[i].tags)
 											if(data._embedded.items[i].tags[t].name=='auto_linked')
 												id = data._embedded.items[i].tags[t].id;
-									npl.hidePreloaderNova();
+									//npl.hidePreloaderNova();
 									$('body').append('<a class="js-navigate-link n_link" href="/contacts/list/contacts/?tag%5B%5D='+id+'&useFilter=y"></a>');
 									$('.n_link').click();
 									$('.n_link').remove();
@@ -202,7 +172,7 @@ n_linked_c.updateAll = function(link,up,func)
 		console.log(up.length);
 		var upd = up.splice(0,100);
 		console.log(upd.length);
-    npl.showPreloaderNova('Загрузка<br>осталось '+up.length+' объектов');
+    //npl.showPreloaderNova('Загрузка<br>осталось '+up.length+' объектов');
 		$.post(link,{update:upd},function(){
 			console.log(up.length);
 			if(up.length>0)
@@ -391,7 +361,7 @@ n_linked_c.getAll = function(func){
         $.post(url,d,function(data){
             list = list.concat(data.response.items);
 
-            npl.showPreloaderNova('Загрузка<br>Обработано '+list.length+' объектов');
+            //npl.showPreloaderNova('Загрузка<br>Обработано '+list.length+' объектов');
 
             console.log(data);
 
